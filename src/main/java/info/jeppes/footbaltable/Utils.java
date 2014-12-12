@@ -24,6 +24,8 @@ import org.json.JSONObject;
  */
 public class Utils {
     
+    private static TreeMap<Calendar, Match> allCachedMaches = null;
+    
     public static Match getMatch(int matchID) {
         JSONObject json;
         try {
@@ -43,7 +45,7 @@ public class Utils {
             JSONObject goal = goalsJSON.getJSONObject(i);
             int player = goal.getInt("player");
             int time = goal.getInt("time");
-            match.addGoal(player, time);
+            match.addGoal(player, time * 1000l);
         }
         return match;
     }
@@ -53,6 +55,13 @@ public class Utils {
     }
     
     public static TreeMap<Calendar, Match> getAllMatches(boolean ignoreEmpty) {
+        return getAllMatches(ignoreEmpty, true);
+    }
+    
+    public static TreeMap<Calendar, Match> getAllMatches(boolean ignoreEmpty, boolean refresh) {
+        if(!refresh && allCachedMaches != null){
+            return allCachedMaches;
+        }
         JSONObject json;
         try {
             json = new JSONObject(readURL("http://178.62.164.18:8080/foosball/api/match/getAll"));
@@ -81,7 +90,8 @@ public class Utils {
             }
             matches.put(match.getOldestGoalTime(), match);
         }
-        return matches;
+        allCachedMaches = matches;
+        return allCachedMaches;
     }
     
     public static String readURL(String address) throws IOException{

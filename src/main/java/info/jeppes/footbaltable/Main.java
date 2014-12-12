@@ -6,6 +6,8 @@
 
 package info.jeppes.footbaltable;
 
+import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
+import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -25,10 +27,13 @@ public class Main extends JFrame{
          this.setPreferredSize(new Dimension(500, 500));
          this.setVisible(true);
          
-         PApplet embed = new FootballTableGUI();
-         add(embed, BorderLayout.CENTER);
-         
+         PApplet embed = new DisplayGoalsOverTime();
+         add(embed, BorderLayout.WEST);
          embed.init();
+         
+         PApplet embed2 = new DisplayGoalsPerWeekDay();
+         add(embed2, BorderLayout.EAST);
+         embed2.init();
          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          
      }

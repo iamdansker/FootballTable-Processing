@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -33,7 +34,7 @@ public class Match implements Comparable<Match>{
     }
 
     public Match(int id, long startTime) {  
-        Calendar calendar = GregorianCalendar.getInstance();
+        Calendar calendar = GregorianCalendar.getInstance(Locale.GERMANY);
         calendar.setTimeInMillis(startTime);
         
         this.startTime = calendar;
@@ -79,7 +80,7 @@ public class Match implements Comparable<Match>{
     }
     
     public void addGoal(int player, long time){
-        Calendar calendar = GregorianCalendar.getInstance();
+        Calendar calendar = GregorianCalendar.getInstance(Locale.GERMANY);
         calendar.setTimeInMillis(time);
         getGoalsMap().put(calendar, player);
     }
