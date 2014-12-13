@@ -10,7 +10,6 @@ import grafica.GPlot;
 import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
 import info.jeppes.footbaltable.Utils;
-import java.util.Arrays;
 import java.util.Calendar;
 import processing.core.PApplet;
 
@@ -29,15 +28,10 @@ public class DisplayGoalsOverTime extends PApplet{
         size( 450, 300 ); //Sets the size of the canvas
         Match match = Utils.getMatch(200);
 
-        System.out.println(Arrays.toString(match.getGoals()));
-        System.out.println(match.getGoalsTimeStamps());
-        System.out.println(match.getNewestGoalTime().getTimeInMillis());
-        System.out.println(match.getOldestGoalTime().getTimeInMillis());
         long time = match.getOldestGoalTime().getTimeInMillis();
 
         int i = 0;
         for(Calendar calendar : match.getGoalsTimeStamps()){
-            System.out.println((calendar.getTimeInMillis() - time) / 1000l);
             goals.add(i++, (calendar.getTimeInMillis() - time) / 1000l);
         }
     }

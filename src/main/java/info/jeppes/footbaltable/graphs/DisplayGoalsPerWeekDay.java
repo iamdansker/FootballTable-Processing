@@ -28,7 +28,7 @@ public class DisplayGoalsPerWeekDay extends PApplet {
     public void setup() {
         Utils.getAllMatches();
         size(300, 300); //Sets the size of the canvas
-        TreeMap<Calendar, Match> matches = Utils.getAllMatches(true);
+        TreeMap<Calendar, Match> matches = Utils.getAllMatches(true, false);
 
         int[] goals = new int[7];
         String[] labels = new String[7];

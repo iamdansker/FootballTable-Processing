@@ -10,7 +10,6 @@ import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
 import info.jeppes.footbaltable.graphs.DisplayWinRate;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import processing.core.PApplet;
@@ -25,24 +24,21 @@ public class Main extends JFrame{
 
          setLayout(new FlowLayout());
          
-         this.setSize(new Dimension(500, 500));
-         this.setPreferredSize(new Dimension(500, 500));
-         this.setVisible(true);
-         
          PApplet embed = new DisplayGoalsOverTime();
-         add(embed, BorderLayout.WEST);
          embed.init();
+         add(embed, BorderLayout.WEST);
          
          PApplet embed2 = new DisplayGoalsPerWeekDay();
-         add(embed2, BorderLayout.EAST);
          embed2.init();
+         add(embed2, BorderLayout.EAST);
          
          PApplet embed3 = new DisplayWinRate();
-         add(embed3, BorderLayout.SOUTH);
          embed3.init();
+         add(embed3, BorderLayout.SOUTH);
          
          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         
+         this.pack();
+         this.setVisible(true);
      }
 
     public static void main(String[] args){
