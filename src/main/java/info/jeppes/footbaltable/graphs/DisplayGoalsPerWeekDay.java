@@ -5,9 +5,10 @@
  */
 package info.jeppes.footbaltable.graphs;
 
-import info.jeppes.footbaltable.*;
 import grafica.GPlot;
 import grafica.GPointsArray;
+import info.jeppes.footbaltable.Match;
+import info.jeppes.footbaltable.Utils;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TreeMap;
@@ -26,7 +27,7 @@ public class DisplayGoalsPerWeekDay extends PApplet {
     @Override
     public void setup() {
         Utils.getAllMatches();
-        size(500, 350); //Sets the size of the canvas
+        size(300, 300); //Sets the size of the canvas
         TreeMap<Calendar, Match> matches = Utils.getAllMatches(true);
 
         int[] goals = new int[7];
@@ -48,7 +49,7 @@ public class DisplayGoalsPerWeekDay extends PApplet {
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
-        plot.setDim(250, 250);
+        plot.setDim(200, 200);
         plot.getTitle().setText("Goals per Week Day");
         plot.getTitle().setTextAlignment(LEFT);
         plot.getYAxis().getAxisLabel().setText("Goals");

@@ -85,6 +85,25 @@ public class Match implements Comparable<Match>{
         getGoalsMap().put(calendar, player);
     }
     
+    public int getWinner(){
+        int player1 = 0;
+        int player2 = 0;
+        for(Integer player : getGoals()){
+            if(player == 1){
+                player1++;
+            } else if (player == 2){
+                player2++;
+            }
+        }
+        if(player1 > player2){
+            return 1;
+        } else if(player2 > player1){
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+    
     public Map<Calendar,Integer> getGoalsMap(){
         return goals;
     }
