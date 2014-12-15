@@ -8,9 +8,9 @@
     
     <repositories>
         <repository>
-            <id>mathias-i.dk</id>
-            <name>mathias-i.dk</name>
-            <url>http://mathias-i.dk/mvn-repo/</url>
+            <id>GroupRepo</id>
+            <name>GroupRepo</name>
+            <url>http://178.62.164.18/repository/internal/</url>
         </repository>
     </repositories>
     
@@ -22,7 +22,7 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>jagracar.Grafica</groupId>
+            <groupId>jagracar</groupId>
             <artifactId>Grafica</artifactId>
             <version>1.2</version>
         </dependency>
