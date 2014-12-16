@@ -8,6 +8,7 @@ package info.jeppes.footbaltable;
 
 import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
+import info.jeppes.footbaltable.graphs.DisplayMatchesPerWeekday;
 import info.jeppes.footbaltable.graphs.DisplayWinRate;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -36,8 +37,13 @@ public class Main extends JFrame{
          embed3.init();
          add(embed3, BorderLayout.SOUTH);
          
+         PApplet embed4 = new DisplayMatchesPerWeekday();
+         embed4.init();
+         add(embed4);
+         
          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         this.pack();
+         //this.pack();
+         this.setSize(800, 600);
          this.setVisible(true);
      }
 
