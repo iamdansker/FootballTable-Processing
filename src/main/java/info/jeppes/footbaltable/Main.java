@@ -7,6 +7,7 @@
 package info.jeppes.footbaltable;
 
 import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
+import info.jeppes.footbaltable.graphs.DisplayGoalsPerPlayer;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
 import info.jeppes.footbaltable.graphs.DisplayMatchesPerWeekday;
 import info.jeppes.footbaltable.graphs.DisplayWinRate;
@@ -40,6 +41,10 @@ public class Main extends JFrame{
          PApplet embed4 = new DisplayMatchesPerWeekday();
          embed4.init();
          add(embed4);
+         
+         PApplet embed5 = new DisplayGoalsPerPlayer();
+         embed5.init();
+         add(embed5);
          
          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          //this.pack();
