@@ -6,13 +6,10 @@
 
 package info.jeppes.footbaltable;
 
-import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
-import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
-import info.jeppes.footbaltable.graphs.DisplayWinRate;
+import info.jeppes.footbaltable.graphs.DisplayGeneralStatistics;
+import info.jeppes.footbaltable.graphs.DisplayMatchTable;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import javax.swing.JFrame;
-import processing.core.PApplet;
 
 /**
  *
@@ -22,19 +19,23 @@ public class Main extends JFrame{
      public Main() {
          super("Embedded PApplet");
 
-         setLayout(new FlowLayout());
+         setLayout(new BorderLayout());
+         DisplayMatchTable displayMatchTable = new DisplayMatchTable();
+         add(displayMatchTable, BorderLayout.CENTER);
+         DisplayGeneralStatistics displayGeneralStatistics = new DisplayGeneralStatistics();
+         add(displayGeneralStatistics, BorderLayout.EAST);
          
-         PApplet embed = new DisplayGoalsOverTime();
-         embed.init();
-         add(embed, BorderLayout.WEST);
-         
-         PApplet embed2 = new DisplayGoalsPerWeekDay();
-         embed2.init();
-         add(embed2, BorderLayout.EAST);
-         
-         PApplet embed3 = new DisplayWinRate();
-         embed3.init();
-         add(embed3, BorderLayout.SOUTH);
+//         PApplet embed = new DisplayGoalsOverTime();
+//         embed.init();
+//         add(embed, BorderLayout.WEST);
+//         
+//         PApplet embed2 = new DisplayGoalsPerWeekDay();
+//         embed2.init();
+//         add(embed2, BorderLayout.EAST);
+//         
+//         PApplet embed3 = new DisplayWinRate();
+//         embed3.init();
+//         add(embed3, BorderLayout.SOUTH);
          
          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          this.pack();
