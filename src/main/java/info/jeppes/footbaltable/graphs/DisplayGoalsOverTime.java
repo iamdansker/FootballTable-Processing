@@ -10,6 +10,7 @@ import grafica.GPlot;
 import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
 import info.jeppes.footbaltable.Utils;
+import java.awt.Dimension;
 import java.util.Calendar;
 import processing.core.PApplet;
 
@@ -26,6 +27,7 @@ public class DisplayGoalsOverTime extends PApplet{
     @Override
     public void setup(){
         size( 450, 300 ); //Sets the size of the canvas
+        setPreferredSize(new Dimension(450,300));
         Match match = Utils.getMatch(200);
 
         long time = match.getOldestGoalTime().getTimeInMillis();

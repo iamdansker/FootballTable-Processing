@@ -7,9 +7,15 @@
 package info.jeppes.footbaltable;
 
 import info.jeppes.footbaltable.graphs.DisplayGeneralStatistics;
+import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
+import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
 import info.jeppes.footbaltable.graphs.DisplayMatchTable;
+import info.jeppes.footbaltable.graphs.DisplayWinRate;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import processing.core.PApplet;
 
 /**
  *
@@ -24,6 +30,27 @@ public class Main extends JFrame{
          add(displayMatchTable, BorderLayout.CENTER);
          DisplayGeneralStatistics displayGeneralStatistics = new DisplayGeneralStatistics();
          add(displayGeneralStatistics, BorderLayout.EAST);
+         
+         JPanel northPanel = new JPanel();
+         northPanel.setLayout(new GridLayout(0, 3));
+         add(northPanel,BorderLayout.NORTH);
+         
+         PApplet goalsOverTime = new DisplayGoalsOverTime();
+         goalsOverTime.init();
+         northPanel.add(goalsOverTime);
+         
+         PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();
+         goalsPerWeekDay.init();
+         northPanel.add(goalsPerWeekDay);
+         
+         PApplet winRate = new DisplayWinRate();
+         winRate.init();
+         northPanel.add(winRate);
+         
+         
+//         PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();
+//         goalsPerWeekDay.init();
+//         add(goalsPerWeekDay,BorderLayout.WEST);
          
 //         PApplet embed = new DisplayGoalsOverTime();
 //         embed.init();
