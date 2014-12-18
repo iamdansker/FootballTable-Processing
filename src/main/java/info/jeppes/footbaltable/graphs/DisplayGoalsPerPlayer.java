@@ -5,7 +5,6 @@ import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
 import info.jeppes.footbaltable.ProcessingApplet;
 import info.jeppes.footbaltable.Utils;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.TreeMap;
@@ -44,7 +43,6 @@ public class DisplayGoalsPerPlayer extends ProcessingApplet {
             }
 
         }
-        System.out.println(Arrays.toString(goalsPerPlayer));
         
         String[] playerNames = new String[]{"Player 1", "Player 2"};
 

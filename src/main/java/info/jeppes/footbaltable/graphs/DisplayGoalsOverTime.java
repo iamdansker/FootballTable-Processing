@@ -21,15 +21,16 @@ public class DisplayGoalsOverTime extends ProcessingApplet{
     GPointsArray goals = new GPointsArray(300);
     // Create a new plot and set its position on the screen
     GPlot plot = new GPlot(this, 0, 0);
+    private int matchID;
 
-    public DisplayGoalsOverTime() {
+    public DisplayGoalsOverTime(int matchID){
         super(450, 300);
+        this.matchID = matchID;
     }
-    
 
     @Override
     public void setup(){
-        Match match = Utils.getMatch(200);
+        Match match = Utils.getMatch(matchID);
 
         long time = match.getOldestGoalTime().getTimeInMillis();
 

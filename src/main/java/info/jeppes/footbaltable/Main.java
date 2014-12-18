@@ -7,9 +7,10 @@
 package info.jeppes.footbaltable;
 
 import info.jeppes.footbaltable.graphs.DisplayGeneralStatistics;
-import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
+import info.jeppes.footbaltable.graphs.DisplayGoalsPerPlayer;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
 import info.jeppes.footbaltable.graphs.DisplayMatchTable;
+import info.jeppes.footbaltable.graphs.DisplayMatchesPerWeekday;
 import info.jeppes.footbaltable.graphs.DisplayWinRate;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -35,20 +36,22 @@ public class Main extends JFrame{
          northPanel.setLayout(new GridLayout(0, 3));
          add(northPanel,BorderLayout.NORTH);
          
-         PApplet goalsOverTime = new DisplayGoalsOverTime();
-         goalsOverTime.init();
-         System.out.println(goalsOverTime.getPreferredSize());
-         northPanel.add(goalsOverTime);
          
          PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();
          goalsPerWeekDay.init();
-         System.out.println(goalsPerWeekDay.getPreferredSize());
          northPanel.add(goalsPerWeekDay);
          
          PApplet winRate = new DisplayWinRate();
          winRate.init();
-         System.out.println(winRate.getPreferredSize());
          northPanel.add(winRate);
+         
+         PApplet goalsPerPlayer = new DisplayGoalsPerPlayer();
+         goalsPerPlayer.init();
+         northPanel.add(goalsPerPlayer);
+         
+         PApplet matchesPerWeekday = new DisplayMatchesPerWeekday();
+         matchesPerWeekday.init();
+         northPanel.add(matchesPerWeekday);
          
          
 //         PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();

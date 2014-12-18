@@ -40,7 +40,7 @@ public class DisplayGoalsPerWeekDay extends ProcessingApplet {
         for (Calendar calendar : matches.keySet()) {
             int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
             int index = dayOfWeek == 1 ? 6 : dayOfWeek - 2;
-            goals[index]++;
+            goals[index] += matches.get(calendar).getGoalsMap().size();
             if(labels[index] == null){
                 labels[index] = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
             }

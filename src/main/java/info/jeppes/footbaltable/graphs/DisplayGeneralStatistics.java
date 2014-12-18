@@ -48,7 +48,7 @@ public class DisplayGeneralStatistics extends JPanel{
     }
     
     public void loadData(){
-        TreeMap<Calendar, Match> allMatches = Utils.getAllMatches();
+        TreeMap<Calendar, Match> allMatches = Utils.getAllMatches(true);
         
         Calendar instance = GregorianCalendar.getInstance(Locale.getDefault());
         

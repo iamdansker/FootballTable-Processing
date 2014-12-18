@@ -3,29 +3,32 @@ package info.jeppes.footbaltable.graphs;
 import grafica.GPlot;
 import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
+import info.jeppes.footbaltable.ProcessingApplet;
 import info.jeppes.footbaltable.Utils;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
-import processing.core.PApplet;
 import processing.core.PVector;
 
 /**
  *
  * @author Mathias
  */
-public class DisplayMatchesPerWeekday extends PApplet {
+public class DisplayMatchesPerWeekday extends ProcessingApplet {
 
     private GPlot plot;
 
     private GPointsArray pointArray = new GPointsArray(7);
-    float[] panelDim = new float[]{400, 200};
 
+    public DisplayMatchesPerWeekday(){
+        super(450, 300);
+    }
+    
     @Override
     public void setup() {
-        size((int) (panelDim[0] + 100), (int) (panelDim[1] + 100)); //Sets the size of the canvas
+        super.setup();
         TreeMap<Calendar, Match> allMatches = Utils.getAllMatches(true);
 
         int[] matchesPerWeekday = new int[8];
@@ -55,7 +58,6 @@ public class DisplayMatchesPerWeekday extends PApplet {
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
-        plot.setDim(panelDim);
         plot.getTitle().setText("Matches per weekday");
         plot.getTitle().setTextAlignment(LEFT);
         plot.getYAxis().getAxisLabel().setText("Matches");
