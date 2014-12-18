@@ -9,6 +9,7 @@ import info.jeppes.footbaltable.Match;
 import info.jeppes.footbaltable.Utils;
 import info.jeppes.footbaltable.graphs.uielements.MatchTableElement;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.Calendar;
 import java.util.TreeMap;
 import javax.swing.BoxLayout;
@@ -37,12 +38,21 @@ public class DisplayMatchTable extends JPanel{
     }
     
     public void loadData(){
-        TreeMap<Calendar, Match> allMatches = Utils.getAllMatches();
+        TreeMap<Calendar, Match> allMatches = Utils.getAllMatches(true);
         panel.removeAll();
         
         for(Match match : allMatches.values()){
             MatchTableElement matchTableElement = new MatchTableElement(match);
             panel.add(matchTableElement);
         }
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        Dimension preferredSize = super.getPreferredSize();
+        if(preferredSize.height > 400){
+            return new Dimension(preferredSize.width,400);
+        }
+        return preferredSize;
     }
 }

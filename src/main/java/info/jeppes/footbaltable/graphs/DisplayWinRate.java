@@ -30,7 +30,7 @@ public class DisplayWinRate extends ProcessingApplet{
     @Override
     public void setup() {
         super.setup();
-        Utils.getAllMatches();
+        Utils.getAllMatches(true);
         TreeMap<Calendar, Match> matches = Utils.getAllMatches(true, false);
         
         winsPerPlayer.add(1, 0, "Draw");

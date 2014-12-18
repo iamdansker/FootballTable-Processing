@@ -31,7 +31,7 @@ public class DisplayGoalsPerWeekDay extends ProcessingApplet {
     @Override
     public void setup() {
         super.setup();
-        Utils.getAllMatches();
+        Utils.getAllMatches(true);
         TreeMap<Calendar, Match> matches = Utils.getAllMatches(true, false);
 
         int[] goals = new int[7];
