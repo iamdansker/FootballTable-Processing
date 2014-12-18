@@ -6,6 +6,7 @@
 package info.jeppes.footbaltable.graphs.uielements;
 
 import info.jeppes.footbaltable.Match;
+import info.jeppes.footbaltable.MatchFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -49,9 +50,9 @@ public class MatchTableElement extends JPanel implements MouseListener{
         int player1Score = match.getGoalsByPlayer(1).size();
         int player2Score = match.getGoalsByPlayer(2).size();
         JLabel player1ScoreLabel = new JLabel(String.valueOf(player1Score));
-        player1ScoreLabel.setForeground(player1Score > player2Score ? Color.GREEN : player1Score == player2Score ? Color.GRAY : Color.RED);
+        player1ScoreLabel.setForeground(player1Score > player2Score ? new Color(0,150,0) : player1Score == player2Score ? Color.GRAY : Color.RED);
         JLabel player2ScoreLabel = new JLabel(String.valueOf(player2Score));
-        player2ScoreLabel.setForeground(player1Score < player2Score ? Color.GREEN : player1Score == player2Score ? Color.GRAY : Color.RED);
+        player2ScoreLabel.setForeground(player1Score < player2Score ? new Color(0,150,0) : player1Score == player2Score ? Color.GRAY : Color.RED);
         
         JPanel scorePanel = new JPanel();
         panel.add(matchLabel,BorderLayout.CENTER);
@@ -69,6 +70,7 @@ public class MatchTableElement extends JPanel implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        MatchFrame matchFrame = new MatchFrame(match.getId());
     }
 
     @Override
