@@ -8,10 +8,8 @@ package info.jeppes.footbaltable;
 
 import info.jeppes.footbaltable.graphs.DisplayGeneralStatistics;
 import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
-import info.jeppes.footbaltable.graphs.DisplayGoalsPerPlayer;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
 import info.jeppes.footbaltable.graphs.DisplayMatchTable;
-import info.jeppes.footbaltable.graphs.DisplayMatchesPerWeekday;
 import info.jeppes.footbaltable.graphs.DisplayWinRate;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -39,14 +37,17 @@ public class Main extends JFrame{
          
          PApplet goalsOverTime = new DisplayGoalsOverTime();
          goalsOverTime.init();
+         System.out.println(goalsOverTime.getPreferredSize());
          northPanel.add(goalsOverTime);
          
          PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();
          goalsPerWeekDay.init();
+         System.out.println(goalsPerWeekDay.getPreferredSize());
          northPanel.add(goalsPerWeekDay);
          
          PApplet winRate = new DisplayWinRate();
          winRate.init();
+         System.out.println(winRate.getPreferredSize());
          northPanel.add(winRate);
          
          
@@ -66,17 +67,16 @@ public class Main extends JFrame{
 //         embed3.init();
 //         add(embed3, BorderLayout.SOUTH);
          
-         PApplet embed4 = new DisplayMatchesPerWeekday();
-         embed4.init();
-         add(embed4);
-         
-         PApplet embed5 = new DisplayGoalsPerPlayer();
-         embed5.init();
-         add(embed5);
+//         PApplet embed4 = new DisplayMatchesPerWeekday();
+//         embed4.init();
+//         add(embed4);
+//         
+//         PApplet embed5 = new DisplayGoalsPerPlayer();
+//         embed5.init();
+//         add(embed5);
          
          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         //this.pack();
-         this.setSize(800, 600);
+         this.pack();
          this.setVisible(true);
      }
 

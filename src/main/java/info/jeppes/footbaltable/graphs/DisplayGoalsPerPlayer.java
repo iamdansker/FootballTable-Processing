@@ -3,12 +3,12 @@ package info.jeppes.footbaltable.graphs;
 import grafica.GPlot;
 import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
+import info.jeppes.footbaltable.ProcessingApplet;
 import info.jeppes.footbaltable.Utils;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.TreeMap;
-import processing.core.PApplet;
 import static processing.core.PConstants.LEFT;
 import static processing.core.PConstants.RIGHT;
 import processing.core.PVector;
@@ -17,16 +17,19 @@ import processing.core.PVector;
  *
  * @author Mathias
  */
-public class DisplayGoalsPerPlayer extends PApplet {
+public class DisplayGoalsPerPlayer extends ProcessingApplet {
 
     private GPlot plot;
 
     private GPointsArray pointArray = new GPointsArray(7);
-    float[] panelDim = new float[]{400, 200};
+//    float[] panelDim = new float[]{400, 200};
+
+    public DisplayGoalsPerPlayer() {
+        super(450, 300);
+    }
 
     @Override
     public void setup() {
-        size((int) (panelDim[0] + 100), (int) (panelDim[1] + 100)); //Sets the size of the canvas
         TreeMap<Calendar, Match> allMatches = Utils.getAllMatches(true);
 
         int[] goalsPerPlayer = new int[2];
@@ -54,7 +57,6 @@ public class DisplayGoalsPerPlayer extends PApplet {
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
-        plot.setDim(panelDim);
         plot.getTitle().setText("Total goals per player");
         plot.getTitle().setTextAlignment(LEFT);
         plot.getYAxis().getAxisLabel().setText("Matches");

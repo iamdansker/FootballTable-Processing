@@ -9,25 +9,26 @@ package info.jeppes.footbaltable.graphs;
 import grafica.GPlot;
 import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
+import info.jeppes.footbaltable.ProcessingApplet;
 import info.jeppes.footbaltable.Utils;
-import java.awt.Dimension;
 import java.util.Calendar;
-import processing.core.PApplet;
 
 /**
  *
  * @author jeppe
  */
-public class DisplayGoalsOverTime extends PApplet{
+public class DisplayGoalsOverTime extends ProcessingApplet{
     GPointsArray goals = new GPointsArray(300);
     // Create a new plot and set its position on the screen
     GPlot plot = new GPlot(this, 0, 0);
+
+    public DisplayGoalsOverTime() {
+        super(450, 300);
+    }
     
 
     @Override
     public void setup(){
-        size( 450, 300 ); //Sets the size of the canvas
-        setPreferredSize(new Dimension(450,300));
         Match match = Utils.getMatch(200);
 
         long time = match.getOldestGoalTime().getTimeInMillis();
