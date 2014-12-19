@@ -93,7 +93,7 @@ public class DisplayGeneralStatistics extends JPanel{
         panelLeft.add(new JLabel("Average Goals Per Match: "));
         panelRight.add(new JLabel(String.valueOf(new BigDecimal(averageGoals).setScale(2, RoundingMode.DOWN).doubleValue())));
         
-        panelLeft.add(new JLabel("Average Duritation: "));
+        panelLeft.add(new JLabel("Average Duration: "));
         panelRight.add(new JLabel(Utils.getTimeMMSSStringShort(averageDuritation)));
         
         panelLeft.add(new JLabel("Matches This Week: "));

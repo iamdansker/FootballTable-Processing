@@ -53,7 +53,7 @@ public class DisplayGoalsPerWeekDay extends ProcessingApplet {
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
-        plot.getTitle().setText("Goals per Week Day");
+        plot.getTitle().setText("Goals per Week Day (total)");
         plot.getYAxis().getAxisLabel().setText("Goals");
         plot.setPoints(goalsPerWeekDay);
         plot.startHistograms(GPlot.VERTICAL);

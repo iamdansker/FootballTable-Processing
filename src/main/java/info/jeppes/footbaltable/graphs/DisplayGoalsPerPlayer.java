@@ -22,7 +22,7 @@ public class DisplayGoalsPerPlayer extends ProcessingApplet {
 //    float[] panelDim = new float[]{400, 200};
 
     public DisplayGoalsPerPlayer() {
-        super(225, 300);
+        super(225, 225);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class DisplayGoalsPerPlayer extends ProcessingApplet {
 
         }
         
-        String[] playerNames = new String[]{"Player 1", "Player 2"};
+        String[] playerNames = new String[]{"Blue", "Red"};
 
         //Add Monday-Saturday
         for (int i = 0; i < goalsPerPlayer.length; i++) {
@@ -52,17 +52,20 @@ public class DisplayGoalsPerPlayer extends ProcessingApplet {
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
+        plot.setYLim(0, Math.max(goalsPerPlayer[0], goalsPerPlayer[1]) * 1.1f);
         plot.setDim(getPreferredSize().width - 100, getPreferredSize().height - 100);
         plot.getTitle().setText("Total goals per player");
         plot.getYAxis().getAxisLabel().setText("Matches");
         plot.startHistograms(GPlot.VERTICAL);
         plot.setPoints(pointArray);
+        
         plot.getHistogram().setDrawLabels(true);
         plot.getHistogram().setRotateLabels(true);
         plot.getHistogram().setBgColors(new int[]{
-            color(0, 0, 255, 50), color(0, 0, 255, 100),
-            color(0, 0, 255, 150), color(0, 0, 255, 200)
+                color(0, 0, 255, 255), 
+                color(255, 0, 0, 255)
         });
+        plot.activateCentering();
 //        float maxY = Math.max(goalsPerPlayer[0], goalsPerPlayer[1]) * 1.1f ;
 //        plot.setYLim(0, maxY);
     }

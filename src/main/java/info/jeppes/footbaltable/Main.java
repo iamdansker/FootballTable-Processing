@@ -7,6 +7,8 @@
 package info.jeppes.footbaltable;
 
 import info.jeppes.footbaltable.graphs.DisplayGeneralStatistics;
+import info.jeppes.footbaltable.graphs.DisplayGoalsDistribution;
+import info.jeppes.footbaltable.graphs.DisplayGoalsOverTheDay;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerPlayer;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
 import info.jeppes.footbaltable.graphs.DisplayMatchDuritations;
@@ -14,6 +16,7 @@ import info.jeppes.footbaltable.graphs.DisplayMatchTable;
 import info.jeppes.footbaltable.graphs.DisplayMatchesPerWeekday;
 import info.jeppes.footbaltable.graphs.DisplayWinRate;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,10 +36,18 @@ public class Main extends JFrame{
          DisplayGeneralStatistics displayGeneralStatistics = new DisplayGeneralStatistics();
          add(displayGeneralStatistics, BorderLayout.EAST);
          
+         JPanel topPanel = new JPanel();
+         topPanel.setLayout(new BorderLayout());
+         
          JPanel northPanel = new JPanel();
          northPanel.setLayout(new GridLayout(0, 3));
-         add(northPanel,BorderLayout.NORTH);
          
+         JPanel topSouthPanel = new JPanel();
+         topSouthPanel.setLayout(new FlowLayout());
+         
+         add(topPanel,BorderLayout.NORTH);
+         topPanel.add(northPanel, BorderLayout.NORTH);
+         topPanel.add(topSouthPanel, BorderLayout.SOUTH);
          
          PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();
          goalsPerWeekDay.init();
@@ -51,7 +62,6 @@ public class Main extends JFrame{
          PApplet goalsPerPlayer = new DisplayGoalsPerPlayer();
          goalsPerPlayer.init();
          jPanel.add(goalsPerPlayer, BorderLayout.SOUTH);
-         System.out.println("test: "+jPanel.getPreferredSize());
          
          PApplet matchesPerWeekday = new DisplayMatchesPerWeekday();
          matchesPerWeekday.init();
@@ -59,10 +69,18 @@ public class Main extends JFrame{
          PApplet matchDuritations = new DisplayMatchDuritations();
          matchDuritations.init();
          
+         DisplayGoalsOverTheDay goalsOverTheDay = new DisplayGoalsOverTheDay();
+         goalsOverTheDay.init();
+         
+         DisplayGoalsDistribution goalsDistribution = new DisplayGoalsDistribution();
+         goalsDistribution.init();
+         
          northPanel.add(goalsPerWeekDay);
          northPanel.add(matchesPerWeekday);
 //         northPanel.add(jPanel);
          northPanel.add(matchDuritations);
+         topSouthPanel.add(goalsOverTheDay);
+         topSouthPanel.add(goalsDistribution);
          add(jPanel, BorderLayout.WEST);
          
          

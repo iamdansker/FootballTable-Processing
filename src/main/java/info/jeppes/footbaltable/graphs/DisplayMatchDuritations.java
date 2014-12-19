@@ -45,9 +45,9 @@ public class DisplayMatchDuritations extends ProcessingApplet{
     public void draw()
     {
         // Set the plot title and the axis labels
-        plot.setTitleText("Match Duritations");
+        plot.setTitleText("Match Duration");
         plot.getXAxis().setAxisLabelText("Match");
-        plot.getYAxis().setAxisLabelText("Duritation in Minutes");
+        plot.getYAxis().setAxisLabelText("Duration in Minutes");
 
         // Add the points
         plot.setPoints(duritations);

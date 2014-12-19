@@ -11,6 +11,7 @@ import info.jeppes.footbaltable.Match;
 import info.jeppes.footbaltable.ProcessingApplet;
 import info.jeppes.footbaltable.Utils;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.TreeMap;
 import processing.core.PApplet;
 import static processing.core.PConstants.CENTER;
@@ -19,14 +20,15 @@ import static processing.core.PConstants.CENTER;
  *
  * @author jeppe
  */
-public class DisplayGoalsOverTheDay extends ProcessingApplet{
+public class DisplayGoalsDistribution extends ProcessingApplet{
 
     private int hour;
     private int highestPoint = 0;
-    private GPointsArray GoalsPerHour = new GPointsArray(24);
+    private int widestPoint = 0;
+    private GPointsArray GoalsPerHour;
     private GPlot plot = new GPlot(this);
 
-    public DisplayGoalsOverTheDay() {
+    public DisplayGoalsDistribution() {
         super((int) (450 * 1.5f), 200);
     }
 
@@ -35,20 +37,29 @@ public class DisplayGoalsOverTheDay extends ProcessingApplet{
         super.setup();
         Utils.getAllMatches();
         TreeMap<Calendar, Match> matches = Utils.getAllMatches(true, false);
-        
-        int[] goalsPerHour = new int[24];
+        HashMap<Integer, Integer> goalsDistribution = new HashMap();
         
         for (Match match : matches.values()) {
-            for(Calendar goal : match.getGoalsTimeStamps()){
-                hour = goal.get(Calendar.HOUR_OF_DAY);
-                goalsPerHour[hour]++;
-                if(goalsPerHour[hour] > highestPoint){
-                    highestPoint = goalsPerHour[hour];
+            int goals = match.getGoalsMap().size();
+            if(widestPoint < goals){
+                widestPoint = goals;
+            }
+            if(goalsDistribution.containsKey(goals)){
+                Integer value = goalsDistribution.put(goals, goalsDistribution.get(goals) + 1) + 1;
+                if(highestPoint < value){
+                    highestPoint = value;
+                }
+            } else {
+                goalsDistribution.put(goals, 1);
+                if(highestPoint < 1){
+                    highestPoint = 1;
                 }
             }
         }
-        for (int i = 0; i < goalsPerHour.length;i++){
-            GoalsPerHour.add(i,goalsPerHour[i],Integer.toString(i));
+        
+        GoalsPerHour = new GPointsArray(widestPoint);
+        for(int i = 0; i < widestPoint; i++){
+            GoalsPerHour.add(i, goalsDistribution.containsKey(i + 1) ? goalsDistribution.get(i + 1) : 0, Integer.toString(i + 1));
         }
         
       // GoalsPerHour.add(0,0);
@@ -63,12 +74,13 @@ public class DisplayGoalsOverTheDay extends ProcessingApplet{
         plot = new GPlot(this);
         plot.setPos(0, 0);
         plot.setDim(getPreferredSize().width - (margin * 2  + 25), getPreferredSize().height - margin * 2);
-        plot.setYLim(0, goalsPerHour[hour] * 1.1f);
-        plot.setXLim(new float[] {-1f,24f});
+        plot.setYLim(0, highestPoint * 1.1f);
+        plot.setXLim(-1, widestPoint);
         plot.setMar(margin, margin + 25, margin, margin);
-        plot.getTitle().setText("Number of goals scored per hour");
+        plot.getTitle().setText("Goals Distribution");
         plot.getTitle().setTextAlignment(CENTER);
-        plot.getYAxis().getAxisLabel().setText("Goals");
+        plot.getYAxis().getAxisLabel().setText("Occurrences");
+        plot.getXAxis().getAxisLabel().setText("Goals");
         plot.getYAxis().getAxisLabel().setTextAlignment(CENTER);
         plot.setPoints(GoalsPerHour);
         plot.activatePointLabels();

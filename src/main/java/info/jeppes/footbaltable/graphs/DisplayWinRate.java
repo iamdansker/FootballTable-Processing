@@ -24,7 +24,7 @@ public class DisplayWinRate extends ProcessingApplet{
     private GPlot plot;
 
     public DisplayWinRate() {
-        super(225, 300);
+        super(225, 225);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class DisplayWinRate extends ProcessingApplet{
         plot.getHistogram().setRotateLabels(true);
         plot.getHistogram().setBgColors(new int[] {
                 color(255, 255, 0, 255), color(0, 0, 255, 255), 
-                color(255, 0, 0, 255), color(0, 0, 255, 200)
+                color(255, 0, 0, 255)
             }
         );
     }
