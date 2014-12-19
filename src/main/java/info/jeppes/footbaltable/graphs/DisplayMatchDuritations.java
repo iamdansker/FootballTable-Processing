@@ -71,18 +71,22 @@ public class DisplayMatchDuritations extends ProcessingApplet{
         int margin = 50;
         plot = new GPlot(this);
         plot.setPos(0, 0);
+        
         plot.setDim(getPreferredSize().width - (margin * 2) , getPreferredSize().height - margin * 2 + 25);
         plot.setYLim(0, highestPoint * 1.1f);
         plot.setXLim(-1, widestPoint);
-//        plot.setMar(margin, margin , margin , margin);
+        plot.setMar(margin, margin, margin - 10 , margin);
+        
         plot.getTitle().setText("Duration Distribution");
         plot.getTitle().setTextAlignment(CENTER);
         plot.getYAxis().getAxisLabel().setText("Occurrences");
-        plot.getXAxis().getAxisLabel().setText("Duration (one minute blocks)");
+        plot.getXAxis().getAxisLabel().setText("Duration (minutes)");
+        plot.getXAxis().getAxisLabel().setOffset(17);
+        plot.getXAxis().setTicks(new float[0]);
+        plot.getXAxis().getAxisLabel().setDim(0, 0);
         plot.getYAxis().getAxisLabel().setTextAlignment(CENTER);
         plot.setPoints(GoalsPerHour);
         plot.activatePointLabels();
-      //  plot.setPointSizes(new float[] {5,5});
         plot.startHistograms(GPlot.VERTICAL);
         plot.getHistogram().setDrawLabels(true);
         plot.getHistogram().setRotateLabels(true);
@@ -103,6 +107,8 @@ public class DisplayMatchDuritations extends ProcessingApplet{
         plot.drawBackground();
         plot.drawBox();
         plot.drawYAxis();
+        plot.drawXAxis();
+        plot.drawLabels();
         plot.drawTitle();
         plot.drawHistograms();
         plot.endDraw();

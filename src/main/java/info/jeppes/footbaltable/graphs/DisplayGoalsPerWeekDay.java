@@ -55,6 +55,7 @@ public class DisplayGoalsPerWeekDay extends ProcessingApplet {
         plot.setPos(0, 0);
         int margin = 50;
         plot.setDim(getPreferredSize().width - (margin * 2) , getPreferredSize().height - margin * 2 + 25);
+        plot.setMar(margin, margin, margin, margin);
         plot.getTitle().setText("Goals per Week Day (total)");
         plot.getYAxis().getAxisLabel().setText("Goals");
         plot.setPoints(goalsPerWeekDay);
