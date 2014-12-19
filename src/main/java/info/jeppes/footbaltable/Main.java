@@ -47,7 +47,7 @@ public class Main extends JFrame{
          northPanel.setLayout(new GridLayout(0, 3));
          
          JPanel topSouthPanel = new JPanel();
-         topSouthPanel.setLayout(new FlowLayout());
+         topSouthPanel.setLayout(new GridLayout(0, 2));
          
          add(topPanel,BorderLayout.NORTH);
          topPanel.add(northPanel, BorderLayout.NORTH);
