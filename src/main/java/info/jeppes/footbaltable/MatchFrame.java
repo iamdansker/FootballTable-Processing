@@ -9,6 +9,7 @@ import info.jeppes.footbaltable.graphs.DisplayGeneralMatchStatistics;
 import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import processing.core.PApplet;
@@ -28,7 +29,10 @@ public class MatchFrame extends JFrame{
     
     private void init(){
         setLayout(new BorderLayout());
-        setTitle("Match "+matchID);
+        Match match = Utils.getMatch(matchID);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");	
+        String startTime = sdf.format(match.getOldestGoalTime().getTime());
+        setTitle("Match "+matchID + " - "+startTime);
         
         PApplet goalsOverTime = new DisplayGoalsOverTime(matchID);
         goalsOverTime.init();
