@@ -42,7 +42,7 @@ public class DisplayGoalsPerWeekDay extends ProcessingApplet {
             int index = dayOfWeek == 1 ? 6 : dayOfWeek - 2;
             goals[index] += matches.get(calendar).getGoalsMap().size();
             if(labels[index] == null){
-                labels[index] = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
+                labels[index] = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH);
             }
         }
         
@@ -55,7 +55,6 @@ public class DisplayGoalsPerWeekDay extends ProcessingApplet {
         plot.setPos(0, 0);
         plot.getTitle().setText("Goals per Week Day");
         plot.getYAxis().getAxisLabel().setText("Goals");
-        plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
         plot.setPoints(goalsPerWeekDay);
         plot.startHistograms(GPlot.VERTICAL);
         plot.getHistogram().setDrawLabels(true);

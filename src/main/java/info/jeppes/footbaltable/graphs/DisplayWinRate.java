@@ -48,7 +48,6 @@ public class DisplayWinRate extends ProcessingApplet{
         plot.setDim(getPreferredSize().width - 100, getPreferredSize().height - 100);
         plot.getTitle().setText("Wins per Player");
         plot.getYAxis().getAxisLabel().setText("Wins");
-        plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
         plot.setPoints(winsPerPlayer);
         plot.startHistograms(GPlot.VERTICAL);
         plot.getHistogram().setDrawLabels(true);

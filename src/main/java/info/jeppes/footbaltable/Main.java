@@ -40,28 +40,31 @@ public class Main extends JFrame{
          
          PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();
          goalsPerWeekDay.init();
-         northPanel.add(goalsPerWeekDay);
          
          JPanel jPanel = new JPanel();
          jPanel.setLayout(new BorderLayout());
          
          PApplet winRate = new DisplayWinRate();
          winRate.init();
-         jPanel.add(winRate, BorderLayout.WEST);
+         jPanel.add(winRate, BorderLayout.NORTH);
          
          PApplet goalsPerPlayer = new DisplayGoalsPerPlayer();
          goalsPerPlayer.init();
-         jPanel.add(goalsPerPlayer, BorderLayout.EAST);
-         northPanel.add(jPanel);
+         jPanel.add(goalsPerPlayer, BorderLayout.SOUTH);
          System.out.println("test: "+jPanel.getPreferredSize());
          
          PApplet matchesPerWeekday = new DisplayMatchesPerWeekday();
          matchesPerWeekday.init();
-         northPanel.add(matchesPerWeekday);
          
          PApplet matchDuritations = new DisplayMatchDuritations();
          matchDuritations.init();
+         
+         northPanel.add(goalsPerWeekDay);
+         northPanel.add(matchesPerWeekday);
+//         northPanel.add(jPanel);
          northPanel.add(matchDuritations);
+         add(jPanel, BorderLayout.WEST);
+         
          
          
 //         PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();

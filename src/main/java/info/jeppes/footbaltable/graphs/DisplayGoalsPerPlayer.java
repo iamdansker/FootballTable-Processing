@@ -8,7 +8,6 @@ import info.jeppes.footbaltable.Utils;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.TreeMap;
-import static processing.core.PConstants.RIGHT;
 import processing.core.PVector;
 
 /**
@@ -56,7 +55,6 @@ public class DisplayGoalsPerPlayer extends ProcessingApplet {
         plot.setDim(getPreferredSize().width - 100, getPreferredSize().height - 100);
         plot.getTitle().setText("Total goals per player");
         plot.getYAxis().getAxisLabel().setText("Matches");
-        plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
         plot.startHistograms(GPlot.VERTICAL);
         plot.setPoints(pointArray);
         plot.getHistogram().setDrawLabels(true);
@@ -64,8 +62,7 @@ public class DisplayGoalsPerPlayer extends ProcessingApplet {
         plot.getHistogram().setBgColors(new int[]{
             color(0, 0, 255, 50), color(0, 0, 255, 100),
             color(0, 0, 255, 150), color(0, 0, 255, 200)
-        }
-        );
+        });
 //        float maxY = Math.max(goalsPerPlayer[0], goalsPerPlayer[1]) * 1.1f ;
 //        plot.setYLim(0, maxY);
     }

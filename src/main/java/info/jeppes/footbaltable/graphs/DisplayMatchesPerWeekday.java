@@ -60,7 +60,6 @@ public class DisplayMatchesPerWeekday extends ProcessingApplet {
         plot.setPos(0, 0);
         plot.getTitle().setText("Matches per weekday (total)");
         plot.getYAxis().getAxisLabel().setText("Matches");
-        plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
         plot.startHistograms(GPlot.VERTICAL);
         plot.setPoints(pointArray);
         plot.getHistogram().setDrawLabels(true);
