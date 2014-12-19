@@ -51,14 +51,6 @@ public class DisplayGoalsOverTheDay extends ProcessingApplet{
             GoalsPerHour.add(i,goalsPerHour[i],Integer.toString(i));
         }
         
-      // GoalsPerHour.add(0,0);
-        
-        /*for (Match match : matches.values()) {
-            int winner = match.getWinner();
-            winsPerPlayer.get(winner).setY(winsPerPlayer.getY(winner) + 1);
-        }*/
-        
-        // Setup for the third plot 
         int margin = 25;
         plot = new GPlot(this);
         plot.setPos(0, 0);
