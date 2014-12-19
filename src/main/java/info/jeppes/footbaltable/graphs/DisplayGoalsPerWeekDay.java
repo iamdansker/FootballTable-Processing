@@ -8,26 +8,30 @@ package info.jeppes.footbaltable.graphs;
 import grafica.GPlot;
 import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
+import info.jeppes.footbaltable.ProcessingApplet;
 import info.jeppes.footbaltable.Utils;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TreeMap;
-import processing.core.PApplet;
 import processing.core.PVector;
 
 /**
  *
  * @author jeppe
  */
-public class DisplayGoalsPerWeekDay extends PApplet {
+public class DisplayGoalsPerWeekDay extends ProcessingApplet {
 
     private GPointsArray goalsPerWeekDay = new GPointsArray(7);
     private GPlot plot;
 
+    public DisplayGoalsPerWeekDay() {
+        super(450, 300);
+    }
+
     @Override
     public void setup() {
-        Utils.getAllMatches();
-        size(300, 300); //Sets the size of the canvas
+        super.setup();
+        Utils.getAllMatches(true);
         TreeMap<Calendar, Match> matches = Utils.getAllMatches(true, false);
 
         int[] goals = new int[7];
@@ -36,9 +40,9 @@ public class DisplayGoalsPerWeekDay extends PApplet {
         for (Calendar calendar : matches.keySet()) {
             int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
             int index = dayOfWeek == 1 ? 6 : dayOfWeek - 2;
-            goals[index]++;
+            goals[index] += matches.get(calendar).getGoalsMap().size();
             if(labels[index] == null){
-                labels[index] = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
+                labels[index] = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH);
             }
         }
         
@@ -49,11 +53,8 @@ public class DisplayGoalsPerWeekDay extends PApplet {
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
-        plot.setDim(200, 200);
         plot.getTitle().setText("Goals per Week Day");
-        plot.getTitle().setTextAlignment(LEFT);
         plot.getYAxis().getAxisLabel().setText("Goals");
-        plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
         plot.setPoints(goalsPerWeekDay);
         plot.startHistograms(GPlot.VERTICAL);
         plot.getHistogram().setDrawLabels(true);

@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Calendar;
-import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,8 +27,10 @@ public class Utils {
     
     public static Match getMatch(int matchID) {
         JSONObject json;
+        String readURL = null;
         try {
-            json = new JSONObject(readURL("http://178.62.164.18:8080/foosball/api/match/get/" + matchID));
+            readURL = readURL("http://178.62.164.18:8080/foosball/api/match/get/" + matchID);
+            json = new JSONObject(readURL);
         } catch (IOException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -107,6 +108,22 @@ public class Utils {
         in.close();
         
         return response.toString();
+    }
+    
+    
+    public static String getTimeMMSSStringShort(long time){
+        int minutes = (int) (time / (60 * 1000));
+        int seconds = (int) ((time / 1000) % 60);
+        boolean useMinuts = minutes != 0;
+        boolean useSeconds = seconds != 0;
+        String timeString = 
+                (useMinuts ? (minutes + " minute"+ (minutes== 1 ? " " : "s ")): "") + 
+                (useMinuts && useSeconds ? "and " : "")+
+                (useSeconds ? (seconds +" second" + (seconds == 1 ? "" : "s")) : "");
+        if(timeString.isEmpty()){
+            return "0 seconds";
+        } 
+        return timeString;
     }
 
 }

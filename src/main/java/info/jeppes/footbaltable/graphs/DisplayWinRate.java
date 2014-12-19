@@ -8,25 +8,29 @@ package info.jeppes.footbaltable.graphs;
 import grafica.GPlot;
 import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
+import info.jeppes.footbaltable.ProcessingApplet;
 import info.jeppes.footbaltable.Utils;
 import java.util.Calendar;
 import java.util.TreeMap;
-import processing.core.PApplet;
 
 /**
  *
  * @author jeppe
  */
-public class DisplayWinRate extends PApplet{
+public class DisplayWinRate extends ProcessingApplet{
 
 
     private GPointsArray winsPerPlayer = new GPointsArray(5);
     private GPlot plot;
 
+    public DisplayWinRate() {
+        super(225, 300);
+    }
+
     @Override
     public void setup() {
-        Utils.getAllMatches();
-        size(300, 300); //Sets the size of the canvas
+        super.setup();
+        Utils.getAllMatches(true);
         TreeMap<Calendar, Match> matches = Utils.getAllMatches(true, false);
         
         winsPerPlayer.add(1, 0, "Draw");
@@ -48,6 +52,9 @@ public class DisplayWinRate extends PApplet{
         plot.getTitle().setTextAlignment(CENTER);
         plot.getYAxis().getAxisLabel().setText("Matches");
         plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
+        plot.setDim(getPreferredSize().width - 100, getPreferredSize().height - 100);
+        plot.getTitle().setText("Wins per Player");
+        plot.getYAxis().getAxisLabel().setText("Wins");
         plot.setPoints(winsPerPlayer);
       //  plot.setPointSizes(new float[] {5,5});
         plot.startHistograms(GPlot.VERTICAL);
