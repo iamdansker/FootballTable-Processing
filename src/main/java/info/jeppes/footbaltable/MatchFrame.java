@@ -5,9 +5,12 @@
  */
 package info.jeppes.footbaltable;
 
+import info.jeppes.footbaltable.graphs.DisplayGeneralMatchStatistics;
 import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
+import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import processing.core.PApplet;
 
 /**
@@ -24,9 +27,15 @@ public class MatchFrame extends JFrame{
     }
     
     private void init(){
+        setLayout(new BorderLayout());
+        setTitle("Match "+matchID);
+        
         PApplet goalsOverTime = new DisplayGoalsOverTime(matchID);
         goalsOverTime.init();
-        add(goalsOverTime);
+        add(goalsOverTime, BorderLayout.WEST);
+        
+        JPanel generalMatchStatistics = new DisplayGeneralMatchStatistics(matchID);
+        add(generalMatchStatistics, BorderLayout.EAST);
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();

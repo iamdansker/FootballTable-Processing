@@ -55,10 +55,15 @@ public class DisplayGeneralStatistics extends JPanel{
         int totalGoals = 0;
         int matchesSize = allMatches.size();
         int matchesThisWeek = 0;
+        long totalDuritation = 0;
         
         for(Calendar calendar : allMatches.keySet()){
             Match match = allMatches.get(calendar);
             totalGoals += match.getGoals().length;
+            long duritation = match.getNewestGoalTime().getTimeInMillis() - match.getOldestGoalTime().getTimeInMillis();
+            if(duritation < 60000000){
+                totalDuritation += duritation;
+            }
             if(instance.getTimeInMillis() - calendar.getTimeInMillis() <= 604800000){ //604800000 == 1 week in ms
                matchesThisWeek++;
             }
@@ -66,6 +71,7 @@ public class DisplayGeneralStatistics extends JPanel{
         
         double averageGoals = (double) totalGoals / matchesSize;
         int averageMatchesThisWeek = matchesThisWeek / 7;
+        long averageDuritation = totalDuritation / matchesSize;
         
         
         
@@ -86,6 +92,9 @@ public class DisplayGeneralStatistics extends JPanel{
         
         panelLeft.add(new JLabel("Average Goals Per Match: "));
         panelRight.add(new JLabel(String.valueOf(new BigDecimal(averageGoals).setScale(2, RoundingMode.DOWN).doubleValue())));
+        
+        panelLeft.add(new JLabel("Average Duritation: "));
+        panelRight.add(new JLabel(Utils.getTimeMMSSStringShort(averageDuritation)));
         
         panelLeft.add(new JLabel("Matches This Week: "));
         panelRight.add(new JLabel(String.valueOf(matchesThisWeek)));

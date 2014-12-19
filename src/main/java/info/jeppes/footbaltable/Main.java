@@ -9,6 +9,7 @@ package info.jeppes.footbaltable;
 import info.jeppes.footbaltable.graphs.DisplayGeneralStatistics;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerPlayer;
 import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
+import info.jeppes.footbaltable.graphs.DisplayMatchDuritations;
 import info.jeppes.footbaltable.graphs.DisplayMatchTable;
 import info.jeppes.footbaltable.graphs.DisplayMatchesPerWeekday;
 import info.jeppes.footbaltable.graphs.DisplayWinRate;
@@ -41,17 +42,26 @@ public class Main extends JFrame{
          goalsPerWeekDay.init();
          northPanel.add(goalsPerWeekDay);
          
+         JPanel jPanel = new JPanel();
+         jPanel.setLayout(new BorderLayout());
+         
          PApplet winRate = new DisplayWinRate();
          winRate.init();
-         northPanel.add(winRate);
+         jPanel.add(winRate, BorderLayout.WEST);
          
          PApplet goalsPerPlayer = new DisplayGoalsPerPlayer();
          goalsPerPlayer.init();
-         northPanel.add(goalsPerPlayer);
+         jPanel.add(goalsPerPlayer, BorderLayout.EAST);
+         northPanel.add(jPanel);
+         System.out.println("test: "+jPanel.getPreferredSize());
          
          PApplet matchesPerWeekday = new DisplayMatchesPerWeekday();
          matchesPerWeekday.init();
          northPanel.add(matchesPerWeekday);
+         
+         PApplet matchDuritations = new DisplayMatchDuritations();
+         matchDuritations.init();
+         northPanel.add(matchDuritations);
          
          
 //         PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();

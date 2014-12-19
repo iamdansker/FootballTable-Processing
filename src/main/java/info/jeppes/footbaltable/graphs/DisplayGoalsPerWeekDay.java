@@ -54,7 +54,6 @@ public class DisplayGoalsPerWeekDay extends ProcessingApplet {
         plot = new GPlot(this);
         plot.setPos(0, 0);
         plot.getTitle().setText("Goals per Week Day");
-        plot.getTitle().setTextAlignment(LEFT);
         plot.getYAxis().getAxisLabel().setText("Goals");
         plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
         plot.setPoints(goalsPerWeekDay);

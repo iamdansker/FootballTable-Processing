@@ -24,7 +24,7 @@ public class DisplayWinRate extends ProcessingApplet{
     private GPlot plot;
 
     public DisplayWinRate() {
-        super(450, 300);
+        super(225, 300);
     }
 
     @Override
@@ -45,8 +45,8 @@ public class DisplayWinRate extends ProcessingApplet{
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
+        plot.setDim(getPreferredSize().width - 100, getPreferredSize().height - 100);
         plot.getTitle().setText("Wins per Player");
-        plot.getTitle().setTextAlignment(LEFT);
         plot.getYAxis().getAxisLabel().setText("Wins");
         plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
         plot.setPoints(winsPerPlayer);
