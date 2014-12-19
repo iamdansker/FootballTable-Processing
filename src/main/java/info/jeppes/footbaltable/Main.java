@@ -18,8 +18,12 @@ import info.jeppes.footbaltable.graphs.DisplayWinRate;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import processing.core.PApplet;
 
 /**
@@ -77,37 +81,10 @@ public class Main extends JFrame{
          
          northPanel.add(goalsPerWeekDay);
          northPanel.add(matchesPerWeekday);
-//         northPanel.add(jPanel);
          northPanel.add(matchDuritations);
          topSouthPanel.add(goalsOverTheDay);
          topSouthPanel.add(goalsDistribution);
          add(jPanel, BorderLayout.WEST);
-         
-         
-         
-//         PApplet goalsPerWeekDay = new DisplayGoalsPerWeekDay();
-//         goalsPerWeekDay.init();
-//         add(goalsPerWeekDay,BorderLayout.WEST);
-         
-//         PApplet embed = new DisplayGoalsOverTime();
-//         embed.init();
-//         add(embed, BorderLayout.WEST);
-//         
-//         PApplet embed2 = new DisplayGoalsPerWeekDay();
-//         embed2.init();
-//         add(embed2, BorderLayout.EAST);
-//         
-//         PApplet embed3 = new DisplayWinRate();
-//         embed3.init();
-//         add(embed3, BorderLayout.SOUTH);
-         
-//         PApplet embed4 = new DisplayMatchesPerWeekday();
-//         embed4.init();
-//         add(embed4);
-//         
-//         PApplet embed5 = new DisplayGoalsPerPlayer();
-//         embed5.init();
-//         add(embed5);
          
          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          this.pack();
@@ -116,6 +93,11 @@ public class Main extends JFrame{
      }
 
     public static void main(String[] args){
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         new Main();
 //        AppletViewer viewer = AppletLauncher.applet(FootballTableGUI.class).start();
         
