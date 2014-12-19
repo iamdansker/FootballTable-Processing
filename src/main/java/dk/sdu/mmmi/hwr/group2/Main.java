@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package info.jeppes.footbaltable;
+package dk.sdu.mmmi.hwr.group2;
 
-import info.jeppes.footbaltable.graphs.DisplayGeneralStatistics;
-import info.jeppes.footbaltable.graphs.DisplayGoalsDistribution;
-import info.jeppes.footbaltable.graphs.DisplayGoalsOverTheDay;
-import info.jeppes.footbaltable.graphs.DisplayGoalsPerPlayer;
-import info.jeppes.footbaltable.graphs.DisplayGoalsPerWeekDay;
-import info.jeppes.footbaltable.graphs.DisplayMatchDuritations;
-import info.jeppes.footbaltable.graphs.DisplayMatchTable;
-import info.jeppes.footbaltable.graphs.DisplayMatchesPerWeekday;
-import info.jeppes.footbaltable.graphs.DisplayWinRate;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayGeneralStatistics;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayGoalsDistribution;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayGoalsOverTheDay;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayGoalsPerPlayer;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayGoalsPerWeekDay;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayMatchDuritations;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayMatchTable;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayMatchesPerWeekday;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayWinRate;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;

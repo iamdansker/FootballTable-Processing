@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package info.jeppes.footbaltable.graphs;
+package dk.sdu.mmmi.hwr.group2.graphs;
 
-import info.jeppes.footbaltable.Match;
-import info.jeppes.footbaltable.Utils;
+import dk.sdu.mmmi.hwr.group2.Match;
+import dk.sdu.mmmi.hwr.group2.Utils;
 import java.awt.BorderLayout;
 import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
@@ -62,7 +62,7 @@ public class DisplayGeneralMatchStatistics extends JPanel{
 //        panelLeft.add(new JLabel("Average Goals Per Match: "));
 //        panelRight.add(new JLabel(String.valueOf(new BigDecimal(averageGoals).setScale(2, RoundingMode.DOWN).doubleValue())));
         
-        panelLeft.add(new JLabel("Duritation"));
+        panelLeft.add(new JLabel("Duration"));
         panelRight.add(new JLabel(matchDuritation));
         
         panelLeft.add(new JLabel("Start Time"));

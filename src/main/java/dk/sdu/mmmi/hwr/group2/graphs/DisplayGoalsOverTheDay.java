@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package info.jeppes.footbaltable.graphs;
+package dk.sdu.mmmi.hwr.group2.graphs;
 
 import grafica.GPlot;
 import grafica.GPointsArray;
-import info.jeppes.footbaltable.Match;
-import info.jeppes.footbaltable.ProcessingApplet;
-import info.jeppes.footbaltable.Utils;
-import java.awt.Color;
+import dk.sdu.mmmi.hwr.group2.Match;
+import dk.sdu.mmmi.hwr.group2.ProcessingApplet;
+import dk.sdu.mmmi.hwr.group2.Utils;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.TreeMap;
 import processing.core.PApplet;
 import static processing.core.PConstants.CENTER;
@@ -21,15 +19,14 @@ import static processing.core.PConstants.CENTER;
  *
  * @author jeppe
  */
-public class DisplayGoalsDistribution extends ProcessingApplet{
+public class DisplayGoalsOverTheDay extends ProcessingApplet{
 
     private int hour;
     private int highestPoint = 0;
-    private int widestPoint = 0;
-    private GPointsArray GoalsPerHour;
+    private GPointsArray GoalsPerHour = new GPointsArray(24);
     private GPlot plot = new GPlot(this);
 
-    public DisplayGoalsDistribution() {
+    public DisplayGoalsOverTheDay() {
         super((int) (450 * 1.5f), 200);
     }
 
@@ -38,50 +35,32 @@ public class DisplayGoalsDistribution extends ProcessingApplet{
         super.setup();
         Utils.getAllMatches();
         TreeMap<Calendar, Match> matches = Utils.getAllMatches(true, false);
-        HashMap<Integer, Integer> goalsDistribution = new HashMap();
+        
+        int[] goalsPerHour = new int[24];
         
         for (Match match : matches.values()) {
-            int goals = match.getGoalsMap().size();
-            if(widestPoint < goals){
-                widestPoint = goals;
-            }
-            if(goalsDistribution.containsKey(goals)){
-                Integer value = goalsDistribution.put(goals, goalsDistribution.get(goals) + 1) + 1;
-                if(highestPoint < value){
-                    highestPoint = value;
-                }
-            } else {
-                goalsDistribution.put(goals, 1);
-                if(highestPoint < 1){
-                    highestPoint = 1;
+            for(Calendar goal : match.getGoalsTimeStamps()){
+                hour = goal.get(Calendar.HOUR_OF_DAY);
+                goalsPerHour[hour]++;
+                if(goalsPerHour[hour] > highestPoint){
+                    highestPoint = goalsPerHour[hour];
                 }
             }
         }
-        
-        GoalsPerHour = new GPointsArray(widestPoint);
-        for(int i = 0; i < widestPoint; i++){
-            GoalsPerHour.add(i, goalsDistribution.containsKey(i + 1) ? goalsDistribution.get(i + 1) : 0, Integer.toString(i + 1));
+        for (int i = 0; i < goalsPerHour.length;i++){
+            GoalsPerHour.add(i,goalsPerHour[i],Integer.toString(i));
         }
         
-      // GoalsPerHour.add(0,0);
-        
-        /*for (Match match : matches.values()) {
-            int winner = match.getWinner();
-            winsPerPlayer.get(winner).setY(winsPerPlayer.getY(winner) + 1);
-        }*/
-        
-        // Setup for the third plot 
         int margin = 25;
         plot = new GPlot(this);
         plot.setPos(0, 0);
         plot.setDim(getPreferredSize().width - (margin * 2  + 25), getPreferredSize().height - margin * 2);
-        plot.setYLim(0, highestPoint * 1.1f);
-        plot.setXLim(-1, widestPoint);
+        plot.setYLim(0, goalsPerHour[hour] * 1.1f);
+        plot.setXLim(new float[] {-1f,24f});
         plot.setMar(margin, margin + 25, margin, margin);
-        plot.getTitle().setText("Goals Distribution");
+        plot.getTitle().setText("Number of goals scored per hour");
         plot.getTitle().setTextAlignment(CENTER);
-        plot.getYAxis().getAxisLabel().setText("Occurrences");
-        plot.getXAxis().getAxisLabel().setText("Goals");
+        plot.getYAxis().getAxisLabel().setText("Goals");
         plot.getYAxis().getAxisLabel().setTextAlignment(CENTER);
         plot.setPoints(GoalsPerHour);
         plot.activatePointLabels();

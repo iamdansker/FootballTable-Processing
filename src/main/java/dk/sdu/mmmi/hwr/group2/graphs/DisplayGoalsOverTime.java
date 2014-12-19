@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-package info.jeppes.footbaltable.graphs;
+package dk.sdu.mmmi.hwr.group2.graphs;
 
 import grafica.GPlot;
 import grafica.GPointsArray;
-import info.jeppes.footbaltable.Match;
-import info.jeppes.footbaltable.ProcessingApplet;
-import info.jeppes.footbaltable.Utils;
+import dk.sdu.mmmi.hwr.group2.Match;
+import dk.sdu.mmmi.hwr.group2.ProcessingApplet;
+import dk.sdu.mmmi.hwr.group2.Utils;
 import java.util.Calendar;
 
 /**

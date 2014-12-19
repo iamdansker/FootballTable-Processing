@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package info.jeppes.footbaltable.graphs.uielements;
+package dk.sdu.mmmi.hwr.group2.graphs.uielements;
 
-import info.jeppes.footbaltable.Match;
-import info.jeppes.footbaltable.MatchFrame;
+import dk.sdu.mmmi.hwr.group2.Match;
+import dk.sdu.mmmi.hwr.group2.MatchFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

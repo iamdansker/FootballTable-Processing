@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package info.jeppes.footbaltable;
+package dk.sdu.mmmi.hwr.group2;
 
-import info.jeppes.footbaltable.graphs.DisplayGeneralMatchStatistics;
-import info.jeppes.footbaltable.graphs.DisplayGoalsOverTime;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayGeneralMatchStatistics;
+import dk.sdu.mmmi.hwr.group2.graphs.DisplayGoalsOverTime;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.text.SimpleDateFormat;
