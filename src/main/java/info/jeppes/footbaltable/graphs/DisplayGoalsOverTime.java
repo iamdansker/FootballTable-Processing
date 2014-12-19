@@ -26,7 +26,7 @@ public class DisplayGoalsOverTime extends ProcessingApplet{
     private int matchID;
 
     public DisplayGoalsOverTime(int matchID){
-        super(450, 300);
+        super(450, 200);
         this.matchID = matchID;
     }
 

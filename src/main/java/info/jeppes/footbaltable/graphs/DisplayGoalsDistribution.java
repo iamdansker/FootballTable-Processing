@@ -10,6 +10,7 @@ import grafica.GPointsArray;
 import info.jeppes.footbaltable.Match;
 import info.jeppes.footbaltable.ProcessingApplet;
 import info.jeppes.footbaltable.Utils;
+import java.awt.Color;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.TreeMap;

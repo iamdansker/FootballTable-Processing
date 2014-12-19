@@ -24,7 +24,7 @@ public class DisplayWinRate extends ProcessingApplet{
     private GPlot plot;
 
     public DisplayWinRate() {
-        super(225, 225);
+        super(225, 200);
     }
 
     @Override

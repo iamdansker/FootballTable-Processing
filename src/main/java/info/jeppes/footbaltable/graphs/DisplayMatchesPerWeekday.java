@@ -23,7 +23,7 @@ public class DisplayMatchesPerWeekday extends ProcessingApplet {
     private GPointsArray pointArray = new GPointsArray(7);
 
     public DisplayMatchesPerWeekday(){
-        super(450, 300);
+        super(450, 200);
     }
     
     @Override
@@ -41,7 +41,7 @@ public class DisplayMatchesPerWeekday extends ProcessingApplet {
             matchesPerWeekday[dayOfWeek]++;
 
         }
-        Map<String, Integer> intValues = Calendar.getInstance().getDisplayNames(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH);
+        Map<String, Integer> intValues = Calendar.getInstance().getDisplayNames(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.ENGLISH);
         //Reverse map for lookup
         Map<Integer, String> displayNames = new HashMap<>();
         for (String i : intValues.keySet()) {
@@ -58,6 +58,8 @@ public class DisplayMatchesPerWeekday extends ProcessingApplet {
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
+        int margin = 50;
+        plot.setDim(getPreferredSize().width - (margin * 2) , getPreferredSize().height - margin * 2 + 25);
         plot.getTitle().setText("Matches per weekday (total)");
         plot.getYAxis().getAxisLabel().setText("Matches");
         plot.startHistograms(GPlot.VERTICAL);

@@ -5,6 +5,7 @@
  */
 package info.jeppes.footbaltable;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import processing.core.PApplet;
 
@@ -17,6 +18,7 @@ public class ProcessingApplet extends PApplet{
     private Dimension size;
     public ProcessingApplet(int width, int height){
         size = new Dimension(width, height);
+        setBackground(Color.WHITE);
     }
 
     @Override

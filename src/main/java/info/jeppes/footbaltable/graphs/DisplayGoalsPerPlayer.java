@@ -22,7 +22,7 @@ public class DisplayGoalsPerPlayer extends ProcessingApplet {
 //    float[] panelDim = new float[]{400, 200};
 
     public DisplayGoalsPerPlayer() {
-        super(225, 225);
+        super(225, 200);
     }
 
     @Override
