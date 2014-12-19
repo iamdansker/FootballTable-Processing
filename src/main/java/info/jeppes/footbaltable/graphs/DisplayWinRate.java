@@ -30,8 +30,8 @@ public class DisplayWinRate extends PApplet{
         TreeMap<Calendar, Match> matches = Utils.getAllMatches(true, false);
         
         winsPerPlayer.add(1, 0, "Draw");
-        winsPerPlayer.add(2, 0, "Player 1");
-        winsPerPlayer.add(3, 0, "Player 2");
+        winsPerPlayer.add(2, 0, "Blue");
+        winsPerPlayer.add(3, 0, "Red");
         
         for (Match match : matches.values()) {
             int winner = match.getWinner();
@@ -41,18 +41,21 @@ public class DisplayWinRate extends PApplet{
         // Setup for the third plot 
         plot = new GPlot(this);
         plot.setPos(0, 0);
-        plot.setDim(200, 200);
-        plot.getTitle().setText("Wins per Player");
-        plot.getTitle().setTextAlignment(LEFT);
-        plot.getYAxis().getAxisLabel().setText("Wins");
+        plot.setDim(200,200);
+        plot.setXLim(new float[] {0.5f,winsPerPlayer.getNPoints()+0.5f});
+        plot.setYLim(new float[] {0,80});
+        plot.getTitle().setText("Matches Won per Player");
+        plot.getTitle().setTextAlignment(CENTER);
+        plot.getYAxis().getAxisLabel().setText("Matches");
         plot.getYAxis().getAxisLabel().setTextAlignment(RIGHT);
         plot.setPoints(winsPerPlayer);
+      //  plot.setPointSizes(new float[] {5,5});
         plot.startHistograms(GPlot.VERTICAL);
         plot.getHistogram().setDrawLabels(true);
         plot.getHistogram().setRotateLabels(true);
         plot.getHistogram().setBgColors(new int[] {
-                color(0, 0, 255, 50), color(0, 0, 255, 100), 
-                color(0, 0, 255, 150), color(0, 0, 255, 200)
+                color(255, 255, 0, 255), color(0, 0, 255, 255), 
+                color(255, 0, 0, 255), color(0, 0, 255, 200)
             }
         );
     }
